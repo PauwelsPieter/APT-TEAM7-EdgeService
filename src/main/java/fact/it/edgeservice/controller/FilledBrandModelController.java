@@ -45,7 +45,7 @@ public class FilledBrandModelController {
 
         for (Brand brand : brands) {
             ResponseEntity<List<Model>> responseEntityModel = restTemplate.exchange(
-                    "http://" + modelServiceBaseUrl + "/brand/{brandId}",
+                    "http://" + modelServiceBaseUrl + "/bybrand/{brandId}",
                     HttpMethod.GET,
                     null,
                     new ParameterizedTypeReference<List<Model>>() {
