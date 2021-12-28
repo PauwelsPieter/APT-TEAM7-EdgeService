@@ -40,19 +40,25 @@ public class FilledBrandModelController {
                 new ParameterizedTypeReference<List<Brand>>() {
                 }
         );
-
         List<Brand> brands = responseEntityBrands.getBody();
 
-        for (Brand brand : brands) {
-            ResponseEntity<List<Model>> responseEntityModel = restTemplate.exchange(
-                    "http://" + modelServiceBaseUrl + "/bybrand/{brandId}",
-                    HttpMethod.GET,
-                    null,
-                    new ParameterizedTypeReference<List<Model>>() {
-                    }, brand.getId()
-            );
+        ResponseEntity<List<Model>> responseEntityModels = restTemplate.exchange(
+                "http://" + modelServiceBaseUrl + "/",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Model>>() {
+                }
+        );
+        List<Model> models = responseEntityModels.getBody();
 
-            returnList.add(new FilledBrandModel(brand, responseEntityModel.getBody()));
+        for (Brand brand : brands) {
+            List<Model> correspondingModels = responseEntityModels.getBody();
+            for (Model model : models) {
+                if (brand.getId() == model.getBrandId()) {
+                    correspondingModels.add(model);
+                }
+            }
+            returnList.add(new FilledBrandModel(brand, correspondingModels));
         }
 
         return returnList;
@@ -70,11 +76,25 @@ public class FilledBrandModelController {
                 new ParameterizedTypeReference<List<Brand>>() {
                 }, country
         );
-
         List<Brand> brands = responseEntityBrands.getBody();
 
+        ResponseEntity<List<Model>> responseEntityModels = restTemplate.exchange(
+                "http://" + modelServiceBaseUrl + "/",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Model>>() {
+                }
+        );
+        List<Model> models = responseEntityModels.getBody();
+
         for (Brand brand : brands) {
-            returnList.add(new FilledBrandModel(brand, Collections.emptyList()));
+            List<Model> correspondingModels = responseEntityModels.getBody();
+            for (Model model : models) {
+                if (brand.getId() == model.getBrandId()) {
+                    correspondingModels.add(model);
+                }
+            }
+            returnList.add(new FilledBrandModel(brand, correspondingModels));
         }
 
         return returnList;

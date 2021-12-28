@@ -2,7 +2,7 @@ package fact.it.edgeservice.model;
 
 public class Model {
     private int id;
-    private int brandId;
+    private String brandId;
     private String year;
     private String type;
     private String engine;
@@ -11,7 +11,7 @@ public class Model {
     public Model() {
     }
 
-    public Model(int brandId, String year, String type, String engine, String name) {
+    public Model(String brandId, String year, String type, String engine, String name) {
         this.brandId = brandId;
         this.year = year;
         this.type = type;
@@ -27,11 +27,11 @@ public class Model {
         this.id = id;
     }
 
-    public int getBrandId() {
+    public String getBrandId() {
         return brandId;
     }
 
-    public void setBrandId(int brandId) {
+    public void setBrandId(String brandId) {
         this.brandId = brandId;
     }
 
