@@ -1,5 +1,6 @@
 package fact.it.edgeservice.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Object returned to front-end
@@ -13,9 +14,11 @@ public class FilledBrandModel {
         setName(brand.getName());
         setCountry(brand.getCountry());
         setFoundingYear(brand.getFoundingYear());
+        carModels = new ArrayList<>();
         models.forEach(model -> {
             carModels.add(new CarModel(model.getYear(), model.getType(), model.getEngine(), model.getName()));
         });
+        setCarModels(carModels);
     }
 
     public String getName() {

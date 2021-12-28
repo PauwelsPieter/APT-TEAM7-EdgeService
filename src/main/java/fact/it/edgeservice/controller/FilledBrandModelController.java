@@ -39,7 +39,7 @@ public class FilledBrandModelController {
         for (Brand brand : brands) {
             List<Model> correspondingModels = new ArrayList<>();
             for (Model model : models) {
-                if (brand.getId() == model.getBrandId()) {
+                if (brand.getId().equals(model.getBrandId())) {
                     correspondingModels.add(model);
                 }
             }
@@ -67,7 +67,7 @@ public class FilledBrandModelController {
         for (Brand brand : brands) {
             List<Model> correspondingModels = new ArrayList<>();
             for (Model model : models) {
-                if (brand.getId() == model.getBrandId()) {
+                if (brand.getId().equals(model.getBrandId())) {
                     correspondingModels.add(model);
                 }
             }
