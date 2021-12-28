@@ -99,4 +99,38 @@ public class FilledBrandModelController {
 
         return returnList;
     }
+
+    // Get all the car brands
+    @GetMapping("/brands")
+    public List<Brand> getBrands() {
+        List<Brand> returnList = new ArrayList<>();
+
+        ResponseEntity<List<Brand>> responseEntityBrands = restTemplate.exchange(
+                "http://" + brandServiceBaseUrl + "/",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Brand>>() {
+                }
+        );
+        returnList = responseEntityBrands.getBody();
+
+        return returnList;
+    }
+
+    // Get all the car models
+    @GetMapping("/models")
+    public List<Model> getModels() {
+        List<Model> returnList = new ArrayList<>();
+
+        ResponseEntity<List<Model>> responseEntityModels = restTemplate.exchange(
+                "http://" + modelServiceBaseUrl + "/",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Model>>() {
+                }
+        );
+        returnList = responseEntityModels.getBody();
+
+        return returnList;
+    }
 }
