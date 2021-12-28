@@ -33,26 +33,11 @@ public class FilledBrandModelController {
     public List<FilledBrandModel> getAll() {
         List<FilledBrandModel> returnList = new ArrayList<>();
 
-        ResponseEntity<List<Brand>> responseEntityBrands = restTemplate.exchange(
-                "http://" + brandServiceBaseUrl + "/",
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Brand>>() {
-                }
-        );
-        List<Brand> brands = responseEntityBrands.getBody();
-
-        ResponseEntity<List<Model>> responseEntityModels = restTemplate.exchange(
-                "http://" + modelServiceBaseUrl + "/",
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Model>>() {
-                }
-        );
-        List<Model> models = responseEntityModels.getBody();
+        List<Brand> brands = getBrands();
+        List<Model> models = getModels();
 
         for (Brand brand : brands) {
-            List<Model> correspondingModels = responseEntityModels.getBody();
+            List<Model> correspondingModels = new ArrayList<>();
             for (Model model : models) {
                 if (brand.getId() == model.getBrandId()) {
                     correspondingModels.add(model);
@@ -77,18 +62,10 @@ public class FilledBrandModelController {
                 }, country
         );
         List<Brand> brands = responseEntityBrands.getBody();
-
-        ResponseEntity<List<Model>> responseEntityModels = restTemplate.exchange(
-                "http://" + modelServiceBaseUrl + "/",
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Model>>() {
-                }
-        );
-        List<Model> models = responseEntityModels.getBody();
+        List<Model> models = getModels();
 
         for (Brand brand : brands) {
-            List<Model> correspondingModels = responseEntityModels.getBody();
+            List<Model> correspondingModels = new ArrayList<>();
             for (Model model : models) {
                 if (brand.getId() == model.getBrandId()) {
                     correspondingModels.add(model);
