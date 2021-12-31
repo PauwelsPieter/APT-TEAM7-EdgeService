@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class FilledBrandModelController {
@@ -72,6 +70,39 @@ public class FilledBrandModelController {
                 }
             }
             returnList.add(new FilledBrandModel(brand, correspondingModels));
+        }
+
+        return returnList;
+    }
+
+    // Get all brands from specific country with all models
+    @GetMapping("/cars/models/year/{year}")
+    public List<FilledBrandModel> getModelsByYear(@PathVariable String year) {
+        List<FilledBrandModel> returnList = new ArrayList<>();
+
+        List<Brand> brands = getBrands();
+        List<Model> models = getModels();
+
+        // Select the models that are from the given year
+        List<Model> correspondingModels = new ArrayList<>();
+        for (Model model : models) {
+            if (model.getYear().equals(year)) {
+                correspondingModels.add(model);
+            }
+        }
+
+        for (Brand brand : brands) {
+            // Add models with the selected year that are from the current brand to an array
+            List<Model> correspondingModels2 = new ArrayList<>();
+            for (Model model : correspondingModels) {
+                if (model.getBrandId().equals(brand.getId())) {
+                    correspondingModels2.add(model);
+                }
+            }
+
+            if (correspondingModels2.size() > 0) {
+                returnList.add(new FilledBrandModel(brand, correspondingModels2));
+            }
         }
 
         return returnList;

@@ -5,12 +5,14 @@ import java.util.List;
 
 // Object returned to front-end
 public class FilledBrandModel {
+    private String id;
     private String name;
     private String country;
     private String foundingYear;
     private List<CarModel> carModels;
 
     public FilledBrandModel(Brand brand, List<Model> models) {
+        setId(brand.getId());
         setName(brand.getName());
         setCountry(brand.getCountry());
         setFoundingYear(brand.getFoundingYear());
@@ -20,6 +22,10 @@ public class FilledBrandModel {
         });
         setCarModels(carModels);
     }
+
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
 
     public String getName() {
         return name;
