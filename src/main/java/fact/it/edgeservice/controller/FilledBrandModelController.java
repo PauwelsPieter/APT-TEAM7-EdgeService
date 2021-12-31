@@ -6,11 +6,10 @@ import fact.it.edgeservice.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -139,6 +138,22 @@ public class FilledBrandModelController {
         }
 
         return returnList;
+    }
+
+    @PostMapping("/cars/brands")
+    public Brand addBrand(@RequestBody Brand brand){
+        Brand postResponse = restTemplate.postForObject("http://" + brandServiceBaseUrl + "/brands", brand, Brand.class);
+
+        return postResponse;
+    }
+
+    @PutMapping("/cars/brands")
+    public Brand updateBrand(@RequestBody Brand brand){
+        ResponseEntity<Brand> responseEntityBrand = restTemplate.exchange("http://" + brandServiceBaseUrl + "/brands", HttpMethod.PUT, new HttpEntity<>(brand), Brand.class);
+
+        Brand putResponse = responseEntityBrand.getBody();
+
+        return putResponse;
     }
 
     // Get all the car brands
