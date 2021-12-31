@@ -156,6 +156,13 @@ public class FilledBrandModelController {
         return putResponse;
     }
 
+    @DeleteMapping("/cars/models/{id}")
+    public ResponseEntity deleteModel(@PathVariable String id) {
+        restTemplate.delete("http://" + modelServiceBaseUrl + "/models/" + id);
+
+        return ResponseEntity.ok().build();
+    }
+
     // Get all the car brands
     private List<Brand> getBrands() {
         List<Brand> returnList = new ArrayList<>();
