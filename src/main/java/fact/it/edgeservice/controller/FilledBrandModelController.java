@@ -28,7 +28,7 @@ public class FilledBrandModelController {
     @Value("${modelservice.baseurl}")
     private String modelServiceBaseUrl;
 
-    // Get all the car brands with their models
+    // Get all brands with all models
     @GetMapping("/cars")
     public List<FilledBrandModel> getAll() {
         List<FilledBrandModel> returnList = new ArrayList<>();
@@ -49,13 +49,13 @@ public class FilledBrandModelController {
         return returnList;
     }
 
-    // Get all the car brands with their models
-    @GetMapping("/cars/{country}")
+    // Get all brands from specific country with all models
+    @GetMapping("/cars/brands/country/{country}")
     public List<FilledBrandModel> getBrandsByCountry(@PathVariable String country) {
         List<FilledBrandModel> returnList = new ArrayList<>();
 
         ResponseEntity<List<Brand>> responseEntityBrands = restTemplate.exchange(
-                "http://" + brandServiceBaseUrl + "/brands/{country}",
+                "http://" + brandServiceBaseUrl + "/brands/country/{country}",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<Brand>>() {
@@ -78,12 +78,11 @@ public class FilledBrandModelController {
     }
 
     // Get all the car brands
-    @GetMapping("/brands")
-    public List<Brand> getBrands() {
+    private List<Brand> getBrands() {
         List<Brand> returnList = new ArrayList<>();
 
         ResponseEntity<List<Brand>> responseEntityBrands = restTemplate.exchange(
-                "http://" + brandServiceBaseUrl + "/",
+                "http://" + brandServiceBaseUrl + "/brands",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<Brand>>() {
@@ -95,12 +94,11 @@ public class FilledBrandModelController {
     }
 
     // Get all the car models
-    @GetMapping("/models")
-    public List<Model> getModels() {
+    private List<Model> getModels() {
         List<Model> returnList = new ArrayList<>();
 
         ResponseEntity<List<Model>> responseEntityModels = restTemplate.exchange(
-                "http://" + modelServiceBaseUrl + "/",
+                "http://" + modelServiceBaseUrl + "/models",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<Model>>() {
