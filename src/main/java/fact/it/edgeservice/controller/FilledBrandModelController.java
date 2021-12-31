@@ -75,7 +75,7 @@ public class FilledBrandModelController {
         return returnList;
     }
 
-    // Get all brands from specific country with all models
+    // Get all brands from specific year with all models
     @GetMapping("/cars/models/year/{year}")
     public List<FilledBrandModel> getModelsByYear(@PathVariable String year) {
         List<FilledBrandModel> returnList = new ArrayList<>();
@@ -93,6 +93,39 @@ public class FilledBrandModelController {
 
         for (Brand brand : brands) {
             // Add models with the selected year that are from the current brand to an array
+            List<Model> correspondingModels2 = new ArrayList<>();
+            for (Model model : correspondingModels) {
+                if (model.getBrandId().equals(brand.getId())) {
+                    correspondingModels2.add(model);
+                }
+            }
+
+            if (correspondingModels2.size() > 0) {
+                returnList.add(new FilledBrandModel(brand, correspondingModels2));
+            }
+        }
+
+        return returnList;
+    }
+
+    // Get all brands from specific type with all models
+    @GetMapping("/cars/models/type/{type}")
+    public List<FilledBrandModel> getModelsByType(@PathVariable String type) {
+        List<FilledBrandModel> returnList = new ArrayList<>();
+
+        List<Brand> brands = getBrands();
+        List<Model> models = getModels();
+
+        // Select the models that are from the given type
+        List<Model> correspondingModels = new ArrayList<>();
+        for (Model model : models) {
+            if (model.getType().equals(type)) {
+                correspondingModels.add(model);
+            }
+        }
+
+        for (Brand brand : brands) {
+            // Add models with the selected type that are from the current brand to an array
             List<Model> correspondingModels2 = new ArrayList<>();
             for (Model model : correspondingModels) {
                 if (model.getBrandId().equals(brand.getId())) {
