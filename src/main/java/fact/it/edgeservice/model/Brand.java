@@ -9,6 +9,12 @@ public class Brand {
     public Brand() {
     }
 
+    public Brand(String name, String country, String foundingYear) {
+        this.name = name;
+        this.country = country;
+        this.foundingYear = foundingYear;
+    }
+
     public Brand(String id, String name, String country, String foundingYear) {
         this.id = id;
         this.name = name;

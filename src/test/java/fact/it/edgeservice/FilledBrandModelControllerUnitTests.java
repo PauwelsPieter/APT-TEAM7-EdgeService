@@ -75,7 +75,7 @@ public class FilledBrandModelControllerUnitTests {
     }
 
     @Test
-    public void whenGetAllBrands_thenReturnJsonBrands() throws Exception {
+    public void whenGetAllBrands_thenReturnFilledBrandModelJson() throws Exception {
         mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + brandServiceBaseUrl + "/brands")))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
@@ -127,6 +127,154 @@ public class FilledBrandModelControllerUnitTests {
                 .andExpect(jsonPath("$[2].carModels[0].type", is(model6.getType())))
                 .andExpect(jsonPath("$[2].carModels[0].engine", is(model6.getEngine())))
                 .andExpect(jsonPath("$[2].carModels[0].name", is(model6.getName())));
+    }
 
+    @Test
+    public void whenGetBrandsFromCountry_thenReturnFilledBrandModelJson() throws Exception {
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + brandServiceBaseUrl + "/brands/country/USA")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(Arrays.asList(brand2)))
+                );
+
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + modelServiceBaseUrl + "/models")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(allModels))
+                );
+
+        mockMvc.perform(get("/cars/brands/country/{country}", "USA"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].name", is(brand2.getName())))
+                .andExpect(jsonPath("$[0].country", is(brand2.getCountry())))
+                .andExpect(jsonPath("$[0].foundingYear", is(brand2.getFoundingYear())))
+                .andExpect(jsonPath("$[0].carModels[0].year", is(model4.getYear())))
+                .andExpect(jsonPath("$[0].carModels[0].type", is(model4.getType())))
+                .andExpect(jsonPath("$[0].carModels[0].engine", is(model4.getEngine())))
+                .andExpect(jsonPath("$[0].carModels[0].name", is(model4.getName())))
+                .andExpect(jsonPath("$[0].carModels[1].year", is(model5.getYear())))
+                .andExpect(jsonPath("$[0].carModels[1].type", is(model5.getType())))
+                .andExpect(jsonPath("$[0].carModels[1].engine", is(model5.getEngine())))
+                .andExpect(jsonPath("$[0].carModels[1].name", is(model5.getName())));
+    }
+
+    @Test
+    public void whenGetModelsFromYear_thenReturnFilledBrandModelJson() throws Exception {
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + brandServiceBaseUrl + "/brands")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(allBrands))
+                );
+
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + modelServiceBaseUrl + "/models")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(allModels))
+                );
+
+        mockMvc.perform(get("/cars/models/year/{year}", "2005"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].name", is(brand1.getName())))
+                .andExpect(jsonPath("$[0].country", is(brand1.getCountry())))
+                .andExpect(jsonPath("$[0].foundingYear", is(brand1.getFoundingYear())))
+                .andExpect(jsonPath("$[0].carModels[0].year", is(model3.getYear())))
+                .andExpect(jsonPath("$[0].carModels[0].type", is(model3.getType())))
+                .andExpect(jsonPath("$[0].carModels[0].engine", is(model3.getEngine())))
+                .andExpect(jsonPath("$[0].carModels[0].name", is(model3.getName())));
+    }
+
+    @Test
+    public void whenGetModelsFromType_thenReturnFilledBrandModelJson() throws Exception {
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + brandServiceBaseUrl + "/brands")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(allBrands))
+                );
+
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + modelServiceBaseUrl + "/models")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(allModels))
+                );
+
+        mockMvc.perform(get("/cars/models/type/{type}", "4x4"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].name", is(brand1.getName())))
+                .andExpect(jsonPath("$[0].country", is(brand1.getCountry())))
+                .andExpect(jsonPath("$[0].foundingYear", is(brand1.getFoundingYear())))
+                .andExpect(jsonPath("$[0].carModels[0].year", is(model3.getYear())))
+                .andExpect(jsonPath("$[0].carModels[0].type", is(model3.getType())))
+                .andExpect(jsonPath("$[0].carModels[0].engine", is(model3.getEngine())))
+                .andExpect(jsonPath("$[0].carModels[0].name", is(model3.getName())))
+                .andExpect(jsonPath("$[1].name", is(brand3.getName())))
+                .andExpect(jsonPath("$[1].country", is(brand3.getCountry())))
+                .andExpect(jsonPath("$[1].foundingYear", is(brand3.getFoundingYear())))
+                .andExpect(jsonPath("$[1].carModels[0].year", is(model6.getYear())))
+                .andExpect(jsonPath("$[1].carModels[0].type", is(model6.getType())))
+                .andExpect(jsonPath("$[1].carModels[0].engine", is(model6.getEngine())))
+                .andExpect(jsonPath("$[1].carModels[0].name", is(model6.getName())));
+    }
+
+    @Test
+    public void whenAddBrand_thenReturnBrandJson() throws Exception {
+        Brand newBrand = new Brand("New brand via edge", "Belgium", "2022");
+
+        mockServer.expect(ExpectedCount.once(),
+                requestTo(new URI("http://" + brandServiceBaseUrl + "/brands")))
+                .andExpect(method(HttpMethod.POST))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(newBrand))
+                );
+
+        mockMvc.perform(post("/cars/brands").content(mapper.writeValueAsString(newBrand)).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is(newBrand.getName())))
+                .andExpect(jsonPath("$.country", is(newBrand.getCountry())))
+                .andExpect(jsonPath("$.foundingYear", is(newBrand.getFoundingYear())));
+    }
+
+    @Test
+    public void whenUpdateBrand_thenReturnBrandJson() throws Exception {
+        Brand updatedBrand = new Brand("1","Updated Brand via edge", "Germany", "2023");
+
+        mockServer.expect(ExpectedCount.once(),
+                requestTo(new URI("http://" + brandServiceBaseUrl + "/brands")))
+                .andExpect(method(HttpMethod.PUT))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(updatedBrand))
+                );
+
+        mockMvc.perform(put("/cars/brands").content(mapper.writeValueAsString(updatedBrand)).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is(updatedBrand.getName())))
+                .andExpect(jsonPath("$.country", is(updatedBrand.getCountry())))
+                .andExpect(jsonPath("$.foundingYear", is(updatedBrand.getFoundingYear())));
+    }
+
+    @Test
+    public void whenDeleteModel_thenReturnStatusOk() throws Exception {
+        mockServer.expect(ExpectedCount.once(),
+                requestTo(new URI("http://" + modelServiceBaseUrl + "/models/1")))
+                .andExpect(method(HttpMethod.DELETE))
+                .andRespond(withStatus(HttpStatus.OK));
+
+        mockMvc.perform(delete("/cars/models/{id}", 1))
+                .andExpect(status().isOk());
     }
 }
