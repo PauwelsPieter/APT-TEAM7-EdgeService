@@ -49,16 +49,16 @@ public class FilledBrandModelControllerUnitTests {
     // ObjectMapper to transform objects to Json strings
     private ObjectMapper mapper = new ObjectMapper();
 
-    private Brand brand1 = new Brand("Honda", "Japan", "1948");
-    private Brand brand2 = new Brand("Tesla", "USA", "2003");
-    private Brand brand3 = new Brand("Dacia", "Romania", "1966");
+    private Brand brand1 = new Brand("1", "Honda", "Japan", "1948");
+    private Brand brand2 = new Brand("2", "Tesla", "USA", "2003");
+    private Brand brand3 = new Brand("3", "Dacia", "Romania", "1966");
 
-    Model model1 = new Model("1","2008","Sport", "221 hp", "Honda Civic Type R" );
-    Model model2 = new Model("1","1990","Sport", "270 hp", "Honda NSX I Coupe" );
-    Model model3 = new Model("1","2005","4x4", "160 hp", "Honda CR-V" );
-    Model model4 = new Model("2","2020","Electric", "417 hp", "Tesla Model X Long Range" );
-    Model model5 = new Model("2","2020","Electric", "346 hp", "Tesla Model 3 Long Range" );
-    Model model6 = new Model("3","2021","4x4", "90 hp", "Dacia Duster " );
+    Model model1 = new Model(1, "1","2008","Sport", "221 hp", "Honda Civic Type R" );
+    Model model2 = new Model(2, "1","1990","Sport", "270 hp", "Honda NSX I Coupe" );
+    Model model3 = new Model(3, "1","2005","4x4", "160 hp", "Honda CR-V" );
+    Model model4 = new Model(4, "2","2020","Electric", "417 hp", "Tesla Model X Long Range" );
+    Model model5 = new Model(5, "2","2020","Electric", "346 hp", "Tesla Model 3 Long Range" );
+    Model model6 = new Model(6, "3","2021","4x4", "90 hp", "Dacia Duster " );
 
     private List<Brand> allBrands = Arrays.asList(brand1, brand2, brand3);
     private List<Model> allModels = Arrays.asList(model1, model2, model3, model4, model5, model6);
@@ -100,6 +100,33 @@ public class FilledBrandModelControllerUnitTests {
                 .andExpect(jsonPath("$[0].carModels[0].year", is(model1.getYear())))
                 .andExpect(jsonPath("$[0].carModels[0].type", is(model1.getType())))
                 .andExpect(jsonPath("$[0].carModels[0].engine", is(model1.getEngine())))
-                .andExpect(jsonPath("$[0].carModels[0].name", is(model1.getName())));
+                .andExpect(jsonPath("$[0].carModels[0].name", is(model1.getName())))
+                .andExpect(jsonPath("$[0].carModels[1].year", is(model2.getYear())))
+                .andExpect(jsonPath("$[0].carModels[1].type", is(model2.getType())))
+                .andExpect(jsonPath("$[0].carModels[1].engine", is(model2.getEngine())))
+                .andExpect(jsonPath("$[0].carModels[1].name", is(model2.getName())))
+                .andExpect(jsonPath("$[0].carModels[2].year", is(model3.getYear())))
+                .andExpect(jsonPath("$[0].carModels[2].type", is(model3.getType())))
+                .andExpect(jsonPath("$[0].carModels[2].engine", is(model3.getEngine())))
+                .andExpect(jsonPath("$[0].carModels[2].name", is(model3.getName())))
+                .andExpect(jsonPath("$[1].name", is(brand2.getName())))
+                .andExpect(jsonPath("$[1].country", is(brand2.getCountry())))
+                .andExpect(jsonPath("$[1].foundingYear", is(brand2.getFoundingYear())))
+                .andExpect(jsonPath("$[1].carModels[0].year", is(model4.getYear())))
+                .andExpect(jsonPath("$[1].carModels[0].type", is(model4.getType())))
+                .andExpect(jsonPath("$[1].carModels[0].engine", is(model4.getEngine())))
+                .andExpect(jsonPath("$[1].carModels[0].name", is(model4.getName())))
+                .andExpect(jsonPath("$[1].carModels[1].year", is(model5.getYear())))
+                .andExpect(jsonPath("$[1].carModels[1].type", is(model5.getType())))
+                .andExpect(jsonPath("$[1].carModels[1].engine", is(model5.getEngine())))
+                .andExpect(jsonPath("$[1].carModels[1].name", is(model5.getName())))
+                .andExpect(jsonPath("$[2].name", is(brand3.getName())))
+                .andExpect(jsonPath("$[2].country", is(brand3.getCountry())))
+                .andExpect(jsonPath("$[2].foundingYear", is(brand3.getFoundingYear())))
+                .andExpect(jsonPath("$[2].carModels[0].year", is(model6.getYear())))
+                .andExpect(jsonPath("$[2].carModels[0].type", is(model6.getType())))
+                .andExpect(jsonPath("$[2].carModels[0].engine", is(model6.getEngine())))
+                .andExpect(jsonPath("$[2].carModels[0].name", is(model6.getName())));
+
     }
 }

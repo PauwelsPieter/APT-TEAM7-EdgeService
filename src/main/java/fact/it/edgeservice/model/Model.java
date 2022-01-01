@@ -11,7 +11,8 @@ public class Model {
     public Model() {
     }
 
-    public Model(String brandId, String year, String type, String engine, String name) {
+    public Model(int id, String brandId, String year, String type, String engine, String name) {
+        this.id = id;
         this.brandId = brandId;
         this.year = year;
         this.type = type;
