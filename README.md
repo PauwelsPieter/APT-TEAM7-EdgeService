@@ -5,6 +5,7 @@
 - [Diagram](#diagram)
 - [Postman](#postman)
 - [Swagger](#swagger)
+- [Testing](#testing)
 - [Requirements](#requirements)
   - [General](#general)
   - [Extra](#extra)
@@ -32,6 +33,17 @@ Making use of SwaggerUI we document the endpoints that can be accessed on the [e
 ![swaggerListOperations](https://user-images.githubusercontent.com/57799581/147872073-c86860ca-485c-4f71-8bfd-7b0461efcc66.png)
 ![swaggerExpandOperations](https://user-images.githubusercontent.com/57799581/147872329-c4a0f6fd-4523-4e43-8f75-01937cb81ffc.png)
 
+## Testing
+For each 'back-end' microservice we added unit and integration tests. For the edge microservice we added unit tests, no integration tests because this service doesn't make use of a database but instead uses the 'back-end' services to connect to the database.
+
+All the tests cover 100% of the methods for the controllers, repositories and constructors of the model classes.
+### Edge service
+![codeCoverageEdgeService](https://user-images.githubusercontent.com/57799581/147872444-cfdecfc1-41b8-43bd-95ab-b5b52a38b543.PNG)
+
+### Brand service
+![codeCoverageBrandService](https://user-images.githubusercontent.com/57799581/147872448-1f8f088d-c7de-4206-b28f-d441f302166e.PNG)
+
+### TODO: Model service
 
 ## Requirements
 ### General
