@@ -3,6 +3,7 @@ package fact.it.edgeservice.controller;
 import fact.it.edgeservice.model.Brand;
 import fact.it.edgeservice.model.FilledBrandModel;
 import fact.it.edgeservice.model.Model;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -11,6 +12,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.view.RedirectView;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.*;
 
@@ -24,6 +27,13 @@ public class FilledBrandModelController {
 
     @Value("${modelservice.baseurl}")
     private String modelServiceBaseUrl;
+
+    @ApiIgnore
+    @ApiOperation(value = "This method is used to get the Swagger documentation.")
+    @RequestMapping("/")
+    public RedirectView greeting() {
+        return new RedirectView("/swagger-ui.html");
+    }
 
     // Get all brands with all models
     @GetMapping("/cars")

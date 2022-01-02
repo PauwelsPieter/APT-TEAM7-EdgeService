@@ -75,6 +75,13 @@ public class FilledBrandModelControllerUnitTests {
     }
 
     @Test
+    public void whenGetRoot_thenReturnSwagger() throws Exception {
+        // Test if we get redirected to /swagger-ui.html (status 302)
+        mockMvc.perform(get("/"))
+                .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
     public void whenGetAllBrands_thenReturnFilledBrandModelJson() throws Exception {
         mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + brandServiceBaseUrl + "/brands")))
                 .andExpect(method(HttpMethod.GET))
