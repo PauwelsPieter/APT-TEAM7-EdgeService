@@ -18,7 +18,7 @@ public class FilledBrandModel {
         setFoundingYear(brand.getFoundingYear());
         carModels = new ArrayList<>();
         models.forEach(model -> {
-            carModels.add(new CarModel(model.getYear(), model.getType(), model.getEngine(), model.getName()));
+            carModels.add(new CarModel(model.getId(), model.getYear(), model.getType(), model.getEngine(), model.getName()));
         });
         setCarModels(carModels);
     }
