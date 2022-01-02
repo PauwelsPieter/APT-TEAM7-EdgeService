@@ -27,6 +27,11 @@ Our topic is based around car :car: brands and different models that these brand
 ## Postman
 
 ## Swagger
+Making use of SwaggerUI we document the endpoints that can be accessed on the [edge service](https://edge-service-server-pauwelspieter.cloud.okteto.net/swagger-ui.html).
+
+![swaggerListOperations](https://user-images.githubusercontent.com/57799581/147872073-c86860ca-485c-4f71-8bfd-7b0461efcc66.png)
+![swaggerExpandOperations](https://user-images.githubusercontent.com/57799581/147872329-c4a0f6fd-4523-4e43-8f75-01937cb81ffc.png)
+
 
 ## Requirements
 ### General
@@ -35,7 +40,7 @@ Our topic is based around car :car: brands and different models that these brand
 - [x] Dockerfile for each microservice
 - [x] README contains a short description for the chosen topic and a diagram of the complete microservice architecture.
 - [ ] Demonstrable functionality total achitecture by Postman requests on the Edge microservice.
-- [ ] Complete implementation SwaggerUI for the Edge microservice and screenshot(s) of the output in the README.
+- [x] Complete implementation SwaggerUI for the Edge microservice and screenshot(s) of the output in the README.
 
 - [ ] Minimum 4 GET endpoints on the Edge microservice, never searching on DB id.
 - [ ] POST, PUT and DELETE endpoints on the Edge microservice.
