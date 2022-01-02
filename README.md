@@ -26,12 +26,17 @@ Our topic is based around car :car: brands and different models that these brand
 ![Diagram](https://lh3.googleusercontent.com/pw/AM-JKLVjswOS8cmJrVqrTHQtwmH7cOhYZGM5oOIQhRAr0dQtmSZPvYT7X_c-Gqx_rTuVhU9i7KwxmK3_E8OAycx9hPbjBCUUhb8d35fNzZ9RVP4ifcYdB_zinbaekQ31yFqZK1oSU4RUCkgWBWr-K2pzNXpj=w1019-h937-no?authuser=0)
 
 ## Postman
+For testing the endpoints we can meke use of Postman. At [this](https://documenter.getpostman.com/view/18957198/UVRHiPPz) link you can find the documentation for each endpoint of the edge service. You can also test these endpoints by clicking "Run in Postman" and then running the collection.
+![postmanTests]()![postmanTests](https://user-images.githubusercontent.com/57799581/147872942-e54c77a4-ae2b-4570-84ca-a946e91a3f70.png)
+
 
 ## Swagger
 Making use of SwaggerUI we document the endpoints that can be accessed on the [edge service](https://edge-service-server-pauwelspieter.cloud.okteto.net/swagger-ui.html).
 
 ![swaggerListOperations](https://user-images.githubusercontent.com/57799581/147872073-c86860ca-485c-4f71-8bfd-7b0461efcc66.png)
 ![swaggerExpandOperations](https://user-images.githubusercontent.com/57799581/147872329-c4a0f6fd-4523-4e43-8f75-01937cb81ffc.png)
+
+(We also applied SwaggerUI documentation for the [brand service](https://brand-service-server-pauwelspieter.cloud.okteto.net/swagger-ui.html) and [model service](https://model-service-server-pauwelspieter.cloud.okteto.net/swagger-ui.html))
 
 ## Testing
 For each 'back-end' microservice we added unit and integration tests. For the edge microservice we added unit tests, no integration tests because this service doesn't make use of a database but instead uses the 'back-end' services to connect to the database.
