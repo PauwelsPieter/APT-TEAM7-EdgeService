@@ -14,6 +14,7 @@ public class CarModel {
         this.engine = engine;
         this.name = name;
     }
+    public int getId() { return id; }
 
     public String getYear() {
         return year;
