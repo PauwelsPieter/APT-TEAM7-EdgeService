@@ -17,6 +17,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.*;
 
+@CrossOrigin
 @RestController
 public class FilledBrandModelController {
     @Autowired
