@@ -18,6 +18,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.RestTemplate;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
@@ -283,5 +284,50 @@ public class FilledBrandModelControllerUnitTests {
 
         mockMvc.perform(delete("/cars/models/{id}", 1))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void whenGetCountries_thenReturnStringJson() throws Exception {
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + brandServiceBaseUrl + "/brands")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(allBrands))
+                );
+
+        mockMvc.perform(get("/cars/countries"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(3)));
+    }
+
+    @Test
+    public void whenGetYears_thenReturnStringJson() throws Exception {
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + modelServiceBaseUrl + "/models")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(allModels))
+                );
+
+        mockMvc.perform(get("/cars/years"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(5)));
+    }
+
+    @Test
+    public void whenGetTypes_thenReturnStringJson() throws Exception {
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI("http://" + modelServiceBaseUrl + "/models")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(allModels))
+                );
+
+        mockMvc.perform(get("/cars/types"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(3)));
     }
 }

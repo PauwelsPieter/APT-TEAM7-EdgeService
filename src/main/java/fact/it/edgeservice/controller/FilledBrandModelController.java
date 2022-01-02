@@ -205,4 +205,51 @@ public class FilledBrandModelController {
 
         return returnList;
     }
+
+
+
+    // Get all brand countries
+    @GetMapping("/cars/countries")
+    public List<String> getCountries() {
+        List<Brand> brands = getBrands();
+
+        List<String> countryList = new ArrayList<>();
+        for (Brand brand : brands) {
+            countryList.add(brand.getCountry());
+        }
+
+        Set<String> returnListSet = new HashSet<String>(countryList);
+        List<String> returnList = new ArrayList<String>(returnListSet);
+        return returnList;
+    }
+
+    // Get all model years
+    @GetMapping("/cars/years")
+    public List<String> getYears() {
+        List<Model> models = getModels();
+
+        List<String> yearList = new ArrayList<>();
+        for (Model model : models) {
+            yearList.add(model.getYear());
+        }
+
+        Set<String> returnListSet = new HashSet<String>(yearList);
+        List<String> returnList = new ArrayList<String>(returnListSet);
+        return returnList;
+    }
+
+    // Get all model types
+    @GetMapping("/cars/types")
+    public List<String> getTypes() {
+        List<Model> models = getModels();
+
+        List<String> typeList = new ArrayList<>();
+        for (Model model : models) {
+            typeList.add(model.getType());
+        }
+
+        Set<String> returnListSet = new HashSet<String>(typeList);
+        List<String> returnList = new ArrayList<String>(returnListSet);
+        return returnList;
+    }
 }
