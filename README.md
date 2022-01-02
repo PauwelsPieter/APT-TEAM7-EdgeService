@@ -56,14 +56,14 @@ All the tests cover 100% of the methods for the controllers, repositories and co
 - [x] 1 Edge microservice
 - [x] Dockerfile for each microservice
 - [x] README contains a short description for the chosen topic and a diagram of the complete microservice architecture.
-- [ ] Demonstrable functionality total achitecture by Postman requests on the Edge microservice.
+- [x] Demonstrable functionality total achitecture by Postman requests on the Edge microservice.
 - [x] Complete implementation SwaggerUI for the Edge microservice and screenshot(s) of the output in the README.
 
-- [ ] Minimum 4 GET endpoints on the Edge microservice, never searching on DB id.
-- [ ] POST, PUT and DELETE endpoints on the Edge microservice.
-- [ ] Minimum 2 GET endpoints on each 'Back-end'microservice, never searching on DB id.
-- [ ] POST, PUT and DELETE endpoints for minumum 1 'Back-end' microservice.
-- [ ] Making use of MongoDB and a no-MySQL DB.
+- [x] Minimum 4 GET endpoints on the Edge microservice, never searching on DB id.
+- [x] POST, PUT and DELETE endpoints on the Edge microservice.
+- [x] Minimum 2 GET endpoints on each 'Back-end'microservice, never searching on DB id.
+- [x] POST, PUT and DELETE endpoints for minumum 1 'Back-end' microservice.
+- [x] Making use of MongoDB and a no-MySQL DB.
 - [ ] Efficient use of @PathVariable vs. @RequestParam.
 
 - [ ] Unit tests for all microservice controllers.
