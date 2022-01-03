@@ -54,7 +54,7 @@ All the tests cover 100% of the methods for the controllers, repositories and co
 In [this repository](https://github.com/PauwelsPieter/APT-TEAM7-FrontEnd) you can find our basic front-end application that communicates with the edge service.
 <!-- Todo: host front-end and paste url here -->
 
-The front-end is tested using Selenium in combindation with Python. The code for this can be found in [this repository](https://github.com/PauwelsPieter/APT-TEAM7-FrontEndSeleniumTesting).
+The front-end is tested using Selenium in combination with Python. The code for this can be found in [this repository](https://github.com/PauwelsPieter/APT-TEAM7-FrontEndSeleniumTesting).
 
 ## Requirements
 ### General
