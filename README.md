@@ -48,7 +48,7 @@ All the tests cover 100% of the methods for the controllers, repositories and co
 ![codeCoverageBrandService](https://user-images.githubusercontent.com/57799581/147872448-1f8f088d-c7de-4206-b28f-d441f302166e.PNG)
 
 ### Model service
-![codeCoverageModelService](https://user-images.githubusercontent.com/57799581/147938212-68cd9920-8ba3-4806-854b-4dbeafdb40b6.PNG)
+![codeCoverageModelService](https://user-images.githubusercontent.com/57799581/147942811-1b303141-cf9a-4576-8705-774f1991405e.PNG)
 
 ## Front-end
 In [this repository](https://github.com/PauwelsPieter/APT-TEAM7-FrontEnd) you can find our basic front-end application that communicates with the edge service.
