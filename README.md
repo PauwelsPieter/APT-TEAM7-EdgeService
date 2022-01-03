@@ -6,6 +6,7 @@
 - [Postman](#postman)
 - [Swagger](#swagger)
 - [Unit and Integration tests](#unit-and-integration-tests)
+- [Front-end](#front-end)
 - [Requirements](#requirements)
   - [General](#general)
   - [Extra](#extra)
@@ -48,6 +49,10 @@ All the tests cover 100% of the methods for the controllers, repositories and co
 
 ### Model service
 ![codeCoverageModelService](https://user-images.githubusercontent.com/57799581/147938212-68cd9920-8ba3-4806-854b-4dbeafdb40b6.PNG)
+
+## Front-end
+In [this repository](https://github.com/PauwelsPieter/APT-TEAM7-FrontEnd) you can find our basic front-end application that communicates with the edge service.
+<!-- Todo: host front-end and paste url here -->
 
 ## Requirements
 ### General
