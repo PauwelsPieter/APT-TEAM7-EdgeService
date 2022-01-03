@@ -24,37 +24,38 @@ Our topic is based around car :car: brands and different models that these brand
 - [APT-TEAM7-EdgeService](https://github.com/PauwelsPieter/APT-TEAM7-EdgeService)
 
 ## Diagram
-![Diagram](https://lh3.googleusercontent.com/pw/AM-JKLVjswOS8cmJrVqrTHQtwmH7cOhYZGM5oOIQhRAr0dQtmSZPvYT7X_c-Gqx_rTuVhU9i7KwxmK3_E8OAycx9hPbjBCUUhb8d35fNzZ9RVP4ifcYdB_zinbaekQ31yFqZK1oSU4RUCkgWBWr-K2pzNXpj=w1019-h937-no?authuser=0)
+![Diagram](https://user-images.githubusercontent.com/57799581/147971704-b32e518a-f0f4-4b70-add1-bbeb8d767d3e.png)
 
 ## Postman
 For testing the endpoints we can meke use of Postman. At [this](https://documenter.getpostman.com/view/18957198/UVRHiPPz) link you can find the documentation for each endpoint of the edge service. You can also test these endpoints by clicking "Run in Postman" and then running the collection.
-![postmanTests]()![postmanTests](https://user-images.githubusercontent.com/57799581/147872942-e54c77a4-ae2b-4570-84ca-a946e91a3f70.png)
+![postmanTests](https://user-images.githubusercontent.com/57799581/147872942-e54c77a4-ae2b-4570-84ca-a946e91a3f70.png)
 
 
 ## Swagger
 Making use of SwaggerUI we document the endpoints that can be accessed on the [edge service](https://edge-service-server-pauwelspieter.cloud.okteto.net/swagger-ui.html).
 
-![swaggerListOperations](https://user-images.githubusercontent.com/57799581/147872073-c86860ca-485c-4f71-8bfd-7b0461efcc66.png)
-![swaggerExpandOperations](https://user-images.githubusercontent.com/57799581/147872329-c4a0f6fd-4523-4e43-8f75-01937cb81ffc.png)
+![swaggerListOperations](https://user-images.githubusercontent.com/57799581/147970788-08aa47d5-d084-48f6-9f06-d23b61cc1992.PNG)
+![swaggerExpandOperations](https://user-images.githubusercontent.com/57799581/147971126-ce6680eb-970a-426c-aca3-e9a963153180.png)
 
 ## Unit and Integration tests
 For each 'back-end' microservice we added unit and integration tests. For the edge microservice we added unit tests, no integration tests because this service doesn't make use of a database but instead uses the 'back-end' services to connect to the database.
 
 All the tests cover 100% of the methods for the controllers, repositories and constructors of the model classes.
 ### Edge service
-![codeCoverageEdgeService](https://user-images.githubusercontent.com/57799581/147872444-cfdecfc1-41b8-43bd-95ab-b5b52a38b543.PNG)
+![codeCoverageEdgeService](https://user-images.githubusercontent.com/57799581/147972376-39718300-2098-49a5-b20a-10bbad06fd07.PNG)
 
 ### Brand service
 ![codeCoverageBrandService](https://user-images.githubusercontent.com/57799581/147872448-1f8f088d-c7de-4206-b28f-d441f302166e.PNG)
 
 ### Model service
-![codeCoverageModelService](https://user-images.githubusercontent.com/57799581/147942811-1b303141-cf9a-4576-8705-774f1991405e.PNG)
+![codeCoverageModelService](https://user-images.githubusercontent.com/57799581/147972901-0f4f5576-3595-4134-8ea3-ea9c5b1157a8.PNG)
 
 ## Front-end
 In [this repository](https://github.com/PauwelsPieter/APT-TEAM7-FrontEnd) you can find our basic front-end application that communicates with the edge service.
-<!-- Todo: host front-end and paste url here -->
+The front-end can be visited here: https://apt-team7.netlify.app/
 
 The front-end is tested using Selenium in combination with Python. The code for this can be found in [this repository](https://github.com/PauwelsPieter/APT-TEAM7-FrontEndSeleniumTesting).
+A demo of the Selenium testing can be found here: https://youtu.be/ujiZQOHegYE
 
 ## Requirements
 ### General
@@ -70,7 +71,7 @@ The front-end is tested using Selenium in combination with Python. The code for 
 - [x] Minimum 2 GET endpoints on each 'Back-end'microservice, never searching on DB id.
 - [x] POST, PUT and DELETE endpoints for minumum 1 'Back-end' microservice.
 - [x] Making use of MongoDB and a no-MySQL DB.
-- [ ] Efficient use of @PathVariable vs. @RequestParam.
+- [x] Efficient use of @PathVariable vs. @RequestParam.
 
 - [x] Unit tests for all microservice controllers.
 - [x] Integration tests for all microservice controllers.
@@ -83,5 +84,5 @@ The front-end is tested using Selenium in combination with Python. The code for 
 - [ ] Keycloak integration. (+15%)
 - [ ] Minimum 1 message queue with for example ActiveMQ. (+15%)
   - [ ] Prometheus auto-scaling via an extra endpoint. (+15%) 
-- [ ] Basic front-end that communicates with the edge-service. (+15%)
-  - [ ] Selenium testing of the front-end (+15%)
+- [x] Basic front-end that communicates with the edge-service. (+15%)
+  - [x] Selenium testing of the front-end (+15%)
