@@ -36,8 +36,6 @@ Making use of SwaggerUI we document the endpoints that can be accessed on the [e
 ![swaggerListOperations](https://user-images.githubusercontent.com/57799581/147872073-c86860ca-485c-4f71-8bfd-7b0461efcc66.png)
 ![swaggerExpandOperations](https://user-images.githubusercontent.com/57799581/147872329-c4a0f6fd-4523-4e43-8f75-01937cb81ffc.png)
 
-(We also applied SwaggerUI documentation for the [brand service](https://brand-service-server-pauwelspieter.cloud.okteto.net/swagger-ui.html) and [model service](https://model-service-server-pauwelspieter.cloud.okteto.net/swagger-ui.html))
-
 ## Testing
 For each 'back-end' microservice we added unit and integration tests. For the edge microservice we added unit tests, no integration tests because this service doesn't make use of a database but instead uses the 'back-end' services to connect to the database.
 
