@@ -72,9 +72,9 @@ The front-end is tested using Selenium in combination with Python. The code for 
 - [x] Making use of MongoDB and a no-MySQL DB.
 - [ ] Efficient use of @PathVariable vs. @RequestParam.
 
-- [ ] Unit tests for all microservice controllers.
-- [ ] Integration tests for all microservice controllers.
-- [ ] 100% method test code coverage for controllers, repositories and constructors of model classes.
+- [x] Unit tests for all microservice controllers.
+- [x] Integration tests for all microservice controllers.
+- [x] 100% method test code coverage for controllers, repositories and constructors of model classes.
 
 - [x] Each GitHub repository has a CI/CD pipeline that runs tests, uploads the .jar as artifact and pushes a Docker container to DockerHub, inclusive SonarCloud.
 - [x] Deployment in K8S @ Oktato Cloud.
