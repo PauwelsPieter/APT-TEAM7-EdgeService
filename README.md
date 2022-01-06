@@ -6,6 +6,7 @@
 - [Postman](#postman)
 - [Swagger](#swagger)
 - [Unit and Integration tests](#unit-and-integration-tests)
+- [Deploying using K8S secrets](#deploying-using-k8s-secrets)
 - [Front-end](#front-end)
 - [Requirements](#requirements)
   - [General](#general)
@@ -49,6 +50,16 @@ All the tests cover 100% of the methods for the controllers, repositories and co
 
 ### Model service
 ![codeCoverageModelService](https://user-images.githubusercontent.com/57799581/147972901-0f4f5576-3595-4134-8ea3-ea9c5b1157a8.PNG)
+
+## Deploying using K8S secrets
+This [file](deploy-all-secrets.yaml) contains the deployment configuration for all the services making use of K8S secrets for the usename and password.
+
+By executing the command ```kubectl create secret generic apt-team7-secret --from-literal=POSTGRES_USER=postgres --from-literal=POSTGRES_PASSWORD=testgresql``` we can define the secrets.
+
+By executing the command ```kubectl apply -f https://raw.githubusercontent.com/PauwelsPieter/APT-TEAM7-EdgeService/master/deploy-all-secrets.yaml``` we can create the services.
+
+The result:
+![DeployModelServiceSecrets](https://user-images.githubusercontent.com/57799581/148394899-99747307-c570-4ab4-8825-09fbca7b204a.PNG)
 
 ## Front-end
 In [this repository](https://github.com/PauwelsPieter/APT-TEAM7-FrontEnd) you can find our basic front-end application that communicates with the edge service.
