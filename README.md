@@ -24,7 +24,7 @@ Our topic is based around car :car: brands and different models that these brand
 - [APT-TEAM7-EdgeService](https://github.com/PauwelsPieter/APT-TEAM7-EdgeService)
 
 ## Diagram
-![Diagram](https://user-images.githubusercontent.com/57799581/147971704-b32e518a-f0f4-4b70-add1-bbeb8d767d3e.png)
+![Diagram](https://user-images.githubusercontent.com/57799581/148376462-2f5f01a8-f96f-4bac-a5c8-0f545a1e88e3.png)
 
 ## Postman
 For testing the endpoints we can meke use of Postman. At [this](https://documenter.getpostman.com/view/18957198/UVRHiPPz) link you can find the documentation for each endpoint of the edge service. You can also test these endpoints by clicking "Run in Postman" and then running the collection.
